@@ -4,11 +4,14 @@ import csv
 import time
 
 
-def getHtmlBS4(url):
+def getHtmlBS4forUrl(url):
     r = requests.get(url)
     # 相手のwebに迷惑（負荷）をかけないためのお作法
     time.sleep(2)
     return BeautifulSoup(r.content, 'html.parser')
+
+def getHtmlBS4forHtml(html):
+    return BeautifulSoup(html, 'html.parser')
 
 # csv出力
 def writeCsv(json_data, file_name):

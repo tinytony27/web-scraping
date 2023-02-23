@@ -1,7 +1,7 @@
 from asyncore import write
 import json
 from work.robots import get_scraping_result
-from work.utils import getHtmlBS4, writeCsv
+from work.utils import getHtmlBS4forUrl, writeCsv
 
 json_data = []
 wallkerplus_url = 'https://www.walkerplus.com/'
@@ -14,7 +14,7 @@ if not(get_scraping_result(wallkerplus_url)):
 for i in range(1):
     index = i + 1
     url = wallkerplus_url + 'event_list/'+str(index)+'.html'
-    soup = getHtmlBS4(url)
+    soup = getHtmlBS4forUrl(url)
 
     json_docs = json.loads(soup.find('script').contents[0])
 
